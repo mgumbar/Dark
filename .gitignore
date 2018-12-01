@@ -1,0 +1,5 @@
+LogServer.Tests/bin/
+LogServer.Tests/obj/Debug/
+LogServer/bin/
+LogServer/obj/Debug/
+.vs/
