@@ -1,6 +1,8 @@
 ﻿using Dark.Models;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Options;
+using Models;
+using Models.Models;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;

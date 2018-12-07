@@ -28,6 +28,7 @@
           "Microsoft.AspNetCore.Razor.Design": "2.1.2",
           "Microsoft.NETCore.App": "2.1.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.1",
+          "Models": "1.0.0",
           "MongoDB.Driver": "2.7.2"
         },
         "runtime": {
@@ -889,6 +890,18 @@
         "dependencies": {
           "System.Runtime": "4.3.0",
           "System.Runtime.Handles": "4.3.0"
+        }
+      },
+      "Models/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.App": "2.1.1",
+          "MongoDB.Driver": "2.7.2"
+        },
+        "runtime": {
+          "Models.dll": {}
+        },
+        "compile": {
+          "Models.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -4160,6 +4173,11 @@
       "sha512": "sha512-k/+g4b7vjdd4aix83sTgC9VG6oXYKAktSfNIJUNGxPEj7ryEOfzHHhfnmsZvjxawwcD9HyWXKCXmPjX8U4zeSw==",
       "path": "system.threading.threadpool/4.3.0",
       "hashPath": "system.threading.threadpool.4.3.0.nupkg.sha512"
+    },
+    "Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
       "type": "package",

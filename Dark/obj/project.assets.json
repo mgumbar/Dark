@@ -5068,6 +5068,20 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "Microsoft.AspNetCore.App": "2.1.1",
+          "MongoDB.Driver": "2.7.2"
+        },
+        "compile": {
+          "bin/placeholder/Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Models.dll": {}
+        }
       }
     }
   },
@@ -13677,6 +13691,11 @@
         "system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
+    },
+    "Models/1.0.0": {
+      "type": "project",
+      "path": "../Models/Models.csproj",
+      "msbuildProject": "../Models/Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -13685,6 +13704,7 @@
       "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
       "Microsoft.NETCore.App >= 2.1.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.1",
+      "Models >= 1.0.0",
       "MongoDB.Driver >= 2.7.2"
     ]
   },
@@ -13717,7 +13737,11 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\hp_envy\\source\\Dark\\Models\\Models.csproj": {
+              "projectPath": "C:\\Users\\hp_envy\\source\\Dark\\Models\\Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

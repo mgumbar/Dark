@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Dark.Context;
 using Dark.Models;
 using Microsoft.Extensions.Options;
+using Models;
+using Models.Models;
 using MongoDB.Driver;
 
 namespace Dark.Repository

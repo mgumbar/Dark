@@ -6,6 +6,8 @@ using Dark.Models;
 using Dark.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Models;
+using Models.Models;
 
 namespace Dark.Controllers
 {
