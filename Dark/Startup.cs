@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DAL.Models;
+using DAL.Repositories;
+using DAL.Context;
 using Dark.Models;
-using Dark.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -11,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
+using DAL;
 
 namespace Dark
 {
@@ -42,7 +45,8 @@ namespace Dark
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             var config = this.Configuration.GetConnectionString("DefaultConnection");
-            services.AddTransient<ILogRepository, LogRepository>();
+            //services.AddTransient<ILogRepository, LogRepository>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

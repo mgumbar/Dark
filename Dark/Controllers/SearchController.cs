@@ -2,35 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DAL;
+using DAL.Models;
+using DAL.Repositories;
 using Dark.Models;
-using Dark.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Models;
-using Models.Models;
 
 namespace Dark.Controllers
 {
     public class SearchController : Controller
     {
-        private readonly ILogRepository _logRepository;
+        private readonly IGenericRepository<Log> _logRepository;
 
-        public SearchController(ILogRepository logRepository)
+        public SearchController(IUnitOfWork uow)
         {
-            _logRepository = logRepository;
+            _logRepository = uow.Log;
         }
 
         // GET: Search
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            return View(await _logRepository.GetAllLogs());
+            return View(await _logRepository.GetAll());
         }
 
-        public async Task<IEnumerable<Log>> GetAll()
-        {
-            return await _logRepository.GetAllLogs();
-        }
+        //public async Task<IEnumerable<Log>> GetAll()
+        //{
+        //    return await _logRepository.GetAll();
+        //}
 
 
         // GET: Search/Details/5
