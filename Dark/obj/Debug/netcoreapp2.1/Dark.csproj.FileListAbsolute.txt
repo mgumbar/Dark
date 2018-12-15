@@ -16,6 +16,7 @@ C:\Users\hp_envy\source\Dark\Dark\obj\Debug\netcoreapp2.1\Dark.AssemblyInfo.cs
 C:\Users\hp_envy\source\Dark\Dark\obj\Debug\netcoreapp2.1\Dark.TagHelpers.input.cache
 C:\Users\hp_envy\source\Dark\Dark\obj\Debug\netcoreapp2.1\Dark.TagHelpers.output.cache
 C:\Users\hp_envy\source\Dark\Dark\obj\Debug\netcoreapp2.1\Dark.RazorCoreGenerate.cache
+C:\Users\hp_envy\source\Dark\Dark\obj\Debug\netcoreapp2.1\Razor\Views\Amon\Index.g.cshtml.cs
 C:\Users\hp_envy\source\Dark\Dark\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
 C:\Users\hp_envy\source\Dark\Dark\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
 C:\Users\hp_envy\source\Dark\Dark\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
@@ -33,4 +34,3 @@ C:\Users\hp_envy\source\Dark\Dark\obj\Debug\netcoreapp2.1\Dark.Views.pdb
 C:\Users\hp_envy\source\Dark\Dark\obj\Debug\netcoreapp2.1\Dark.csproj.CopyComplete
 C:\Users\hp_envy\source\Dark\Dark\obj\Debug\netcoreapp2.1\Dark.dll
 C:\Users\hp_envy\source\Dark\Dark\obj\Debug\netcoreapp2.1\Dark.pdb
-C:\Users\hp_envy\source\Dark\Dark\obj\Debug\netcoreapp2.1\Razor\Views\Amon\Index.g.cshtml.cs
