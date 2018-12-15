@@ -1,49 +1,49 @@
-Sending build context to Docker daemon  19.26MB
+Sending build context to Docker daemon  18.59MB
 Step 1/12 : FROM microsoft/dotnet:sdk AS build-env
  ---> 540aa875e6c2
 Step 2/12 : COPY . /app
- ---> 0b78e567e5c0
+ ---> 5583d8a4e3ef
 Step 3/12 : WORKDIR /app/Common/DAL/
-Removing intermediate container 5ca56d4d6f1b
- ---> e7edbfda6134
+Removing intermediate container 64eeba76bb6a
+ ---> 235c5ff87a95
 Step 4/12 : RUN ["dotnet", "restore"]
- ---> Running in 290e95b5c6ca
+ ---> Running in 235511196db1
   Restoring packages for /app/Common/DAL/DAL.csproj...
   Installing System.Threading.Overlapped 4.3.0.
+  Installing System.Threading.Thread 4.0.0.
+  Installing Microsoft.Win32.Registry 4.0.0.
   Installing System.Net.NetworkInformation 4.3.0.
-  Installing System.Security.Claims 4.0.1.
   Installing runtime.native.System.Net.Security 4.0.1.
   Installing System.Security.Principal 4.0.1.
-  Installing Microsoft.Win32.Registry 4.0.0.
-  Installing System.Threading.Thread 4.0.0.
+  Installing System.Security.Claims 4.0.1.
   Installing System.Threading.ThreadPool 4.0.10.
+  Installing System.Diagnostics.Process 4.1.0.
   Installing DnsClient 1.0.7.
   Installing System.Net.Security 4.0.0.
   Installing System.Security.SecureString 4.0.0.
-  Installing System.Diagnostics.TextWriterTraceListener 4.0.0.
   Installing System.Diagnostics.TraceSource 4.0.0.
-  Installing System.Diagnostics.Process 4.1.0.
+  Installing System.Diagnostics.TextWriterTraceListener 4.0.0.
+  Installing System.Collections.NonGeneric 4.0.1.
   Installing System.ComponentModel 4.0.1.
   Installing System.ComponentModel.Primitives 4.1.0.
   Installing MongoDB.Driver 2.7.2.
-  Installing MongoDB.Bson 2.7.2.
   Installing System.ComponentModel.TypeConverter 4.1.0.
-  Installing MongoDB.Driver.Core 2.7.2.
-  Installing System.Collections.Specialized 4.0.1.
-  Installing System.Collections.NonGeneric 4.0.1.
   Installing Microsoft.AspNetCore.Razor.Design 2.1.1.
+  Installing System.Collections.Specialized 4.0.1.
+  Installing MongoDB.Driver.Core 2.7.2.
+  Installing MongoDB.Bson 2.7.2.
   Generating MSBuild file /app/Common/DAL/obj/DAL.csproj.nuget.g.props.
   Generating MSBuild file /app/Common/DAL/obj/DAL.csproj.nuget.g.targets.
-  Restore completed in 8.74 sec for /app/Common/DAL/DAL.csproj.
-Removing intermediate container 290e95b5c6ca
- ---> 601d12e1404a
+  Restore completed in 8.04 sec for /app/Common/DAL/DAL.csproj.
+Removing intermediate container 235511196db1
+ ---> 58b3c1d7939e
 Step 5/12 : WORKDIR /app/Dark/
-Removing intermediate container a0921f546d2e
- ---> 1a0d8e00980a
+Removing intermediate container 52f5c04b237d
+ ---> 5af3101c01bd
 Step 6/12 : RUN ["dotnet", "restore"]
- ---> Running in ecc77c06fb0e
+ ---> Running in 256d2e345e5a
   Restoring packages for /app/Dark/Dark.csproj...
-  Restore completed in 118.79 ms for /app/Common/DAL/DAL.csproj.
+  Restore completed in 142.64 ms for /app/Common/DAL/DAL.csproj.
   Installing Microsoft.VisualStudio.Web.CodeGeneration.Contracts 2.1.1.
   Installing Microsoft.VisualStudio.Web.CodeGeneration.Utils 2.1.1.
   Installing Microsoft.VisualStudio.Web.CodeGeneration.Templating 2.1.1.
@@ -57,13 +57,13 @@ Step 6/12 : RUN ["dotnet", "restore"]
   Installing Bootflat 2.0.4.
   Generating MSBuild file /app/Dark/obj/Dark.csproj.nuget.g.props.
   Generating MSBuild file /app/Dark/obj/Dark.csproj.nuget.g.targets.
-  Restore completed in 14.85 sec for /app/Dark/Dark.csproj.
-Removing intermediate container ecc77c06fb0e
- ---> 324421d88be5
+  Restore completed in 7.99 sec for /app/Dark/Dark.csproj.
+Removing intermediate container 256d2e345e5a
+ ---> 70d5102ea87d
 Step 7/12 : COPY . ./
- ---> fe823d42a384
+ ---> 86f96f2bc381
 Step 8/12 : RUN dotnet publish -c Release -o out
- ---> Running in fe934f39dc76
+ ---> Running in b81153a52cc7
 Microsoft (R) Build Engine version 15.9.20+g88f5fadfbe for .NET Core
 Copyright (C) Microsoft Corporation. All rights reserved.
 
@@ -72,73 +72,26 @@ Copyright (C) Microsoft Corporation. All rights reserved.
   Restoring packages for /app/Dark/Services/Services.csproj...
   Generating MSBuild file /app/Dark/Services/obj/Services.csproj.nuget.g.props.
   Generating MSBuild file /app/Dark/Services/obj/Services.csproj.nuget.g.targets.
-  Restore completed in 318.55 ms for /app/Dark/Services/Services.csproj.
+  Restore completed in 334.67 ms for /app/Dark/Services/Services.csproj.
   Generating MSBuild file /app/Dark/Common/DAL/obj/DAL.csproj.nuget.g.props.
   Generating MSBuild file /app/Dark/Common/DAL/obj/DAL.csproj.nuget.g.targets.
   Generating MSBuild file /app/Dark/Dark/obj/Dark.csproj.nuget.g.props.
   Generating MSBuild file /app/Dark/Dark/obj/Dark.csproj.nuget.g.targets.
-  Restore completed in 882.43 ms for /app/Dark/Common/DAL/DAL.csproj.
-  Restore completed in 886.62 ms for /app/Dark/Dark/Dark.csproj.
+  Restore completed in 912.98 ms for /app/Dark/Common/DAL/DAL.csproj.
+  Restore completed in 918.23 ms for /app/Dark/Dark/Dark.csproj.
   Services -> /app/Dark/Services/bin/Release/netcoreapp2.1/Services.dll
   Services -> /app/Dark/Services/out/
 UnitOfWork.cs(16,43): warning CS0169: The field 'UnitOfWork.courseRepository' is never used [/app/Dark/Common/DAL/DAL.csproj]
   DAL -> /app/Dark/Common/DAL/bin/Release/netcoreapp2.1/DAL.dll
   DAL -> /app/Dark/Common/DAL/out/
-Common/DAL/obj/MCD/Debug/netcoreapp2.1/DAL.AssemblyInfo.cs(10,12): error CS0579: Duplicate 'System.Reflection.AssemblyCompanyAttribute' attribute [/app/Dark/Dark/Dark.csproj]
-Common/DAL/obj/MCD/Debug/netcoreapp2.1/DAL.AssemblyInfo.cs(11,12): error CS0579: Duplicate 'System.Reflection.AssemblyConfigurationAttribute' attribute [/app/Dark/Dark/Dark.csproj]
-Common/DAL/obj/MCD/Debug/netcoreapp2.1/DAL.AssemblyInfo.cs(12,12): error CS0579: Duplicate 'System.Reflection.AssemblyFileVersionAttribute' attribute [/app/Dark/Dark/Dark.csproj]
-Common/DAL/obj/MCD/Debug/netcoreapp2.1/DAL.AssemblyInfo.cs(13,12): error CS0579: Duplicate 'System.Reflection.AssemblyInformationalVersionAttribute' attribute [/app/Dark/Dark/Dark.csproj]
-Common/DAL/obj/MCD/Debug/netcoreapp2.1/DAL.AssemblyInfo.cs(14,12): error CS0579: Duplicate 'System.Reflection.AssemblyProductAttribute' attribute [/app/Dark/Dark/Dark.csproj]
-Common/DAL/obj/MCD/Debug/netcoreapp2.1/DAL.AssemblyInfo.cs(15,12): error CS0579: Duplicate 'System.Reflection.AssemblyTitleAttribute' attribute [/app/Dark/Dark/Dark.csproj]
-Common/DAL/obj/MCD/Debug/netcoreapp2.1/DAL.AssemblyInfo.cs(16,12): error CS0579: Duplicate 'System.Reflection.AssemblyVersionAttribute' attribute [/app/Dark/Dark/Dark.csproj]
-obj/Release/netcoreapp2.1/Dark.AssemblyInfo.cs(10,12): error CS0579: Duplicate 'System.Reflection.AssemblyCompanyAttribute' attribute [/app/Dark/Dark/Dark.csproj]
-obj/Release/netcoreapp2.1/Dark.AssemblyInfo.cs(11,12): error CS0579: Duplicate 'System.Reflection.AssemblyConfigurationAttribute' attribute [/app/Dark/Dark/Dark.csproj]
-obj/Release/netcoreapp2.1/Dark.AssemblyInfo.cs(12,12): error CS0579: Duplicate 'System.Reflection.AssemblyFileVersionAttribute' attribute [/app/Dark/Dark/Dark.csproj]
-obj/Release/netcoreapp2.1/Dark.AssemblyInfo.cs(13,12): error CS0579: Duplicate 'System.Reflection.AssemblyInformationalVersionAttribute' attribute [/app/Dark/Dark/Dark.csproj]
-obj/Release/netcoreapp2.1/Dark.AssemblyInfo.cs(14,12): error CS0579: Duplicate 'System.Reflection.AssemblyProductAttribute' attribute [/app/Dark/Dark/Dark.csproj]
-obj/Release/netcoreapp2.1/Dark.AssemblyInfo.cs(15,12): error CS0579: Duplicate 'System.Reflection.AssemblyTitleAttribute' attribute [/app/Dark/Dark/Dark.csproj]
-obj/Release/netcoreapp2.1/Dark.AssemblyInfo.cs(16,12): error CS0579: Duplicate 'System.Reflection.AssemblyVersionAttribute' attribute [/app/Dark/Dark/Dark.csproj]
-Common/DAL/Context/DarkContext.cs(24,33): warning CS0436: The type 'Log' in '/app/Dark/Dark/Common/DAL/Models/Log.cs' conflicts with the imported type 'Log' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Log.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/Context/DarkContext.cs(17,37): warning CS0436: The type 'Settings' in '/app/Dark/Dark/Common/DAL/Models/Settings.cs' conflicts with the imported type 'Settings' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Settings.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/Context/GenericContext.cs(15,40): warning CS0436: The type 'Settings' in '/app/Dark/Dark/Common/DAL/Models/Settings.cs' conflicts with the imported type 'Settings' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Settings.cs'. [/app/Dark/Dark/Dark.csproj]
-Controllers/AmonController.cs(16,31): warning CS0436: The type 'IUnitOfWork' in '/app/Dark/Dark/Common/DAL/IUnitOfWork.cs' conflicts with the imported type 'IUnitOfWork' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/IUnitOfWork.cs'. [/app/Dark/Dark/Dark.csproj]
-Controllers/AmonController.cs(15,26): warning CS0436: The type 'IGenericRepository<T>' in '/app/Dark/Dark/Common/DAL/Repositories/IGenericRepository.cs' conflicts with the imported type 'IGenericRepository<T>' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Repositories/IGenericRepository.cs'. [/app/Dark/Dark/Dark.csproj]
-Controllers/AmonController.cs(15,45): warning CS0436: The type 'Workflow' in '/app/Dark/Dark/Common/DAL/Models/Workflow.cs' conflicts with the imported type 'Workflow' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Workflow.cs'. [/app/Dark/Dark/Dark.csproj]
-Controllers/SearchController.cs(18,33): warning CS0436: The type 'IUnitOfWork' in '/app/Dark/Dark/Common/DAL/IUnitOfWork.cs' conflicts with the imported type 'IUnitOfWork' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/IUnitOfWork.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/IUnitOfWork.cs(12,9): warning CS0436: The type 'DarkContext' in '/app/Dark/Dark/Common/DAL/Context/DarkContext.cs' conflicts with the imported type 'DarkContext' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Context/DarkContext.cs'. [/app/Dark/Dark/Dark.csproj]
-Controllers/SearchController.cs(16,26): warning CS0436: The type 'IGenericRepository<T>' in '/app/Dark/Dark/Common/DAL/Repositories/IGenericRepository.cs' conflicts with the imported type 'IGenericRepository<T>' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Repositories/IGenericRepository.cs'. [/app/Dark/Dark/Dark.csproj]
-Controllers/SearchController.cs(16,45): warning CS0436: The type 'Log' in '/app/Dark/Dark/Common/DAL/Models/Log.cs' conflicts with the imported type 'Log' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Log.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/IUnitOfWork.cs(14,9): warning CS0436: The type 'IGenericRepository<T>' in '/app/Dark/Dark/Common/DAL/Repositories/IGenericRepository.cs' conflicts with the imported type 'IGenericRepository<T>' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Repositories/IGenericRepository.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/IUnitOfWork.cs(14,28): warning CS0436: The type 'Log' in '/app/Dark/Dark/Common/DAL/Models/Log.cs' conflicts with the imported type 'Log' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Log.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/IUnitOfWork.cs(16,9): warning CS0436: The type 'IGenericRepository<T>' in '/app/Dark/Dark/Common/DAL/Repositories/IGenericRepository.cs' conflicts with the imported type 'IGenericRepository<T>' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Repositories/IGenericRepository.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/IUnitOfWork.cs(16,28): warning CS0436: The type 'Workflow' in '/app/Dark/Dark/Common/DAL/Models/Workflow.cs' conflicts with the imported type 'Workflow' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Workflow.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/Repositories/GenericRepository.cs(13,41): warning CS0436: The type 'IGenericRepository<T>' in '/app/Dark/Dark/Common/DAL/Repositories/IGenericRepository.cs' conflicts with the imported type 'IGenericRepository<T>' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Repositories/IGenericRepository.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/Repositories/GenericRepository.cs(26,28): warning CS0436: The type 'Log' in '/app/Dark/Dark/Common/DAL/Models/Log.cs' conflicts with the imported type 'Log' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Log.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/Repositories/ILogRepository.cs(12,26): warning CS0436: The type 'Log' in '/app/Dark/Dark/Common/DAL/Models/Log.cs' conflicts with the imported type 'Log' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Log.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/Repositories/ILogRepository.cs(14,14): warning CS0436: The type 'Log' in '/app/Dark/Dark/Common/DAL/Models/Log.cs' conflicts with the imported type 'Log' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Log.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/Repositories/ILogRepository.cs(17,26): warning CS0436: The type 'Log' in '/app/Dark/Dark/Common/DAL/Models/Log.cs' conflicts with the imported type 'Log' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Log.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/Repositories/ILogRepository.cs(20,21): warning CS0436: The type 'Log' in '/app/Dark/Dark/Common/DAL/Models/Log.cs' conflicts with the imported type 'Log' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Log.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/Repositories/GenericRepository.cs(19,43): warning CS0436: The type 'Settings' in '/app/Dark/Dark/Common/DAL/Models/Settings.cs' conflicts with the imported type 'Settings' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Settings.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/Repositories/LogRepository.cs(13,34): warning CS0436: The type 'ILogRepository' in '/app/Dark/Dark/Common/DAL/Repositories/ILogRepository.cs' conflicts with the imported type 'ILogRepository' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Repositories/ILogRepository.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/Repositories/GenericRepository.cs(16,26): warning CS0436: The type 'GenericContext<T>' in '/app/Dark/Dark/Common/DAL/Context/GenericContext.cs' conflicts with the imported type 'GenericContext<T>' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Context/GenericContext.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/Repositories/LogRepository.cs(23,28): warning CS0436: The type 'Log' in '/app/Dark/Dark/Common/DAL/Models/Log.cs' conflicts with the imported type 'Log' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Log.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/Repositories/LogRepository.cs(28,39): warning CS0436: The type 'Log' in '/app/Dark/Dark/Common/DAL/Models/Log.cs' conflicts with the imported type 'Log' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Log.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/Repositories/LogRepository.cs(41,21): warning CS0436: The type 'Log' in '/app/Dark/Dark/Common/DAL/Models/Log.cs' conflicts with the imported type 'Log' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Log.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/Repositories/LogRepository.cs(46,33): warning CS0436: The type 'Log' in '/app/Dark/Dark/Common/DAL/Models/Log.cs' conflicts with the imported type 'Log' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Log.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/Repositories/LogRepository.cs(17,39): warning CS0436: The type 'Settings' in '/app/Dark/Dark/Common/DAL/Models/Settings.cs' conflicts with the imported type 'Settings' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Settings.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/Repositories/LogRepository.cs(15,26): warning CS0436: The type 'DarkContext' in '/app/Dark/Dark/Common/DAL/Context/DarkContext.cs' conflicts with the imported type 'DarkContext' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Context/DarkContext.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/Models/Workflow.cs(26,21): warning CS0436: The type 'Step' in '/app/Dark/Dark/Common/DAL/Models/Step.cs' conflicts with the imported type 'Step' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Step.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/UnitOfWork.cs(11,31): warning CS0436: The type 'IUnitOfWork' in '/app/Dark/Dark/Common/DAL/IUnitOfWork.cs' conflicts with the imported type 'IUnitOfWork' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/IUnitOfWork.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/UnitOfWork.cs(25,16): warning CS0436: The type 'DarkContext' in '/app/Dark/Dark/Common/DAL/Context/DarkContext.cs' conflicts with the imported type 'DarkContext' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Context/DarkContext.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/UnitOfWork.cs(33,16): warning CS0436: The type 'IGenericRepository<T>' in '/app/Dark/Dark/Common/DAL/Repositories/IGenericRepository.cs' conflicts with the imported type 'IGenericRepository<T>' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Repositories/IGenericRepository.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/UnitOfWork.cs(33,35): warning CS0436: The type 'Log' in '/app/Dark/Dark/Common/DAL/Models/Log.cs' conflicts with the imported type 'Log' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Log.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/UnitOfWork.cs(46,16): warning CS0436: The type 'IGenericRepository<T>' in '/app/Dark/Dark/Common/DAL/Repositories/IGenericRepository.cs' conflicts with the imported type 'IGenericRepository<T>' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Repositories/IGenericRepository.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/UnitOfWork.cs(46,35): warning CS0436: The type 'Workflow' in '/app/Dark/Dark/Common/DAL/Models/Workflow.cs' conflicts with the imported type 'Workflow' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Workflow.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/UnitOfWork.cs(19,36): warning CS0436: The type 'Settings' in '/app/Dark/Dark/Common/DAL/Models/Settings.cs' conflicts with the imported type 'Settings' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Settings.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/UnitOfWork.cs(13,17): warning CS0436: The type 'DarkContext' in '/app/Dark/Dark/Common/DAL/Context/DarkContext.cs' conflicts with the imported type 'DarkContext' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Context/DarkContext.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/UnitOfWork.cs(14,17): warning CS0436: The type 'GenericRepository<T>' in '/app/Dark/Dark/Common/DAL/Repositories/GenericRepository.cs' conflicts with the imported type 'GenericRepository<T>' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Repositories/GenericRepository.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/UnitOfWork.cs(14,35): warning CS0436: The type 'Log' in '/app/Dark/Dark/Common/DAL/Models/Log.cs' conflicts with the imported type 'Log' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Log.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/UnitOfWork.cs(15,17): warning CS0436: The type 'GenericRepository<T>' in '/app/Dark/Dark/Common/DAL/Repositories/GenericRepository.cs' conflicts with the imported type 'GenericRepository<T>' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Repositories/GenericRepository.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/UnitOfWork.cs(15,35): warning CS0436: The type 'Workflow' in '/app/Dark/Dark/Common/DAL/Models/Workflow.cs' conflicts with the imported type 'Workflow' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Workflow.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/UnitOfWork.cs(16,17): warning CS0436: The type 'GenericRepository<T>' in '/app/Dark/Dark/Common/DAL/Repositories/GenericRepository.cs' conflicts with the imported type 'GenericRepository<T>' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Repositories/GenericRepository.cs'. [/app/Dark/Dark/Dark.csproj]
-Common/DAL/UnitOfWork.cs(17,26): warning CS0436: The type 'Settings' in '/app/Dark/Dark/Common/DAL/Models/Settings.cs' conflicts with the imported type 'Settings' in 'DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/app/Dark/Dark/Common/DAL/Models/Settings.cs'. [/app/Dark/Dark/Dark.csproj]
+  Dark -> /app/Dark/Dark/bin/Release/netcoreapp2.1/Dark.dll
+  Dark -> /app/Dark/Dark/bin/Release/netcoreapp2.1/Dark.Views.dll
+  Dark -> /app/Dark/Dark/out/
+Removing intermediate container b81153a52cc7
+ ---> 1c21f1f34de9
+Step 9/12 : FROM microsoft/dotnet:aspnetcore-runtime
+ ---> db366d73508b
+Step 10/12 : WORKDIR /app/Dark
+Removing intermediate container ff328daeacc1
+ ---> e3eaf393a9d1
+Step 11/12 : COPY --from=build-env /app/out .
