@@ -5,3 +5,5 @@ LogServer/obj/Debug/
 .vs/
 Dark/bin/*
 Dark/obj/*
+Common/DAL/bin/*
+Common/DAL/obj/*
