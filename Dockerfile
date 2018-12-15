@@ -12,7 +12,7 @@ RUN ["dotnet", "restore"]
 # Copy everything else and build
 COPY . /app
 WORKDIR /app
-RUN dotnet publish -c Release -o out
+RUN dotnet publish -c Release -o /app/out
 
 # Build runtime image
 FROM microsoft/dotnet:aspnetcore-runtime
