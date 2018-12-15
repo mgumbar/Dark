@@ -10,11 +10,10 @@ RUN ["dotnet", "restore"]
 
 # Copy everything else and build
 COPY . ./
-FROM build AS publish
-RUN dotnet publish --no-restore -c Release -o /app
+RUN dotnet publish -c Release -o out
 
 # Build runtime image
-FROM base AS final
+FROM microsoft/dotnet:aspnetcore-runtime
 WORKDIR /app
-COPY --from=publish /app .
+COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "Dark.dll"]
