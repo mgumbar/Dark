@@ -16,7 +16,7 @@
         <div class="panel-body">
             <div class="content-row">
                 <div class="row">
-                    @using (Html.BeginForm("Index", "Search", FormMethod.Get, new { @class = "form" }))
+                    @using (Html.BeginForm("Index", "Search", FormMethod.Post, new { @class = "form" }))
                     {
                         <div class="col-md-2">
                             @Html.TextBox("application", null, new { @class = "form-control", @id = "application", @placeholder = "application" })

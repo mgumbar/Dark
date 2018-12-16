@@ -24,5 +24,10 @@ namespace DAL.Context
             //return _database.GetCollection<T>(T.GetType().ToString());
             return _database.GetCollection<T>(tableName);
         }
+
+        public IMongoDatabase GetDatabase()
+        {
+            return this._database;
+        }
     }
 }

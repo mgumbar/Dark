@@ -7,6 +7,7 @@ using DAL;
 using DAL.Context;
 using DAL.Models;
 using MongoDB.Driver;
+using MongoDB.Bson;
 
 namespace DAL.Repositories
 {
@@ -34,13 +35,18 @@ namespace DAL.Repositories
             //return test;
             try
             {
-                return await _context.Get(this.tableName).Find(_ => true).Limit(5000).ToListAsync();
+                return await _context.Get(this.tableName).Find(_ => true).Limit(10).ToListAsync();
             }
             catch (Exception ex)
             {
                 // log or manage the exception
                 throw ex;
             }
+        }
+
+        public IMongoCollection<BsonDocument> GetCollection()
+        {
+            return this._context.GetDatabase().GetCollection<BsonDocument>(this.tableName);
         }
 
         public Task<T> GetLog(string id)
