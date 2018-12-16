@@ -35,7 +35,7 @@ namespace DAL.Repositories
             //return test;
             try
             {
-                return await _context.Get(this.tableName).Find(_ => true).Limit(10).ToListAsync();
+                return await _context.Get(this.tableName).Find(_ => true).Limit(5000).ToListAsync();
             }
             catch (Exception ex)
             {
