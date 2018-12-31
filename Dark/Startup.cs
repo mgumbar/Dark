@@ -43,7 +43,18 @@ namespace Dark
                     = Configuration.GetSection("MongoConnection:Database").Value;
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            //services.AddCors(options => options.AddPolicy("SiteCorsPolicy", builder =>
+            //{
+            //    builder.AllowAnyHeader()
+            //    .AllowAnyMethod()
+            //    .AllowAnyOrigin()
+            //    .AllowCredentials();
+            //}));
+
+            services.AddMvc().AddJsonOptions(jsonOptions =>
+            {
+                jsonOptions.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             var config = this.Configuration.GetConnectionString("DefaultConnection");
             //services.AddTransient<ILogRepository, LogRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();

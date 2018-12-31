@@ -15,18 +15,28 @@ namespace DAL.Repositories
         where T : class
     {
         private readonly GenericContext<T> _context = null;
+        private readonly IMongoCollection<T> _collection = null;
         private readonly string tableName;
 
         public GenericRepository(IOptions<Settings> settings)
         {
-            _context = new GenericContext<T>(settings);
+            this._context = new GenericContext<T>(settings);
             this.tableName = typeof(T).ToString().ToLower().Split(".").Last();
+            this._collection = this._context.Get(this.tableName);
         }
 
 
-        public Task AddLog(Log item)
+        public async Task Add(T item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await this._collection.InsertOneAsync(item);
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
         }
 
         public async Task<IEnumerable<T>> GetAll()
@@ -35,7 +45,7 @@ namespace DAL.Repositories
             //return test;
             try
             {
-                return await _context.Get(this.tableName).Find(_ => true).Limit(5000).ToListAsync();
+                return await this._collection.Find(_ => true).Limit(50).ToListAsync();
             }
             catch (Exception ex)
             {
@@ -49,9 +59,39 @@ namespace DAL.Repositories
             return this._context.GetDatabase().GetCollection<BsonDocument>(this.tableName);
         }
 
-        public Task<T> GetLog(string id)
+        public async Task<T> Get(long id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await this._collection
+                                .Find(note => "id" == id.ToString())
+                                .FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+        }
+
+        public async Task<T> Get(string id)
+        {
+            try
+            {
+                ObjectId internalId = GetInternalId(id);
+                var filterId = String.Format("_id:ObjectId('{0}')", id);
+                var filter = String.Format(@"{{{0}}}",
+                                             filterId);
+
+                return await this._collection
+                                .Find(filter)
+                                .FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
         }
 
         public Task<IEnumerable<T>> Get(string bodyText, DateTime updatedFrom, long headerSizeLimit)
@@ -59,19 +99,97 @@ namespace DAL.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<bool> RemoveAll()
+        public async Task<bool> RemoveAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                DeleteResult actionResult
+                    = await this._collection
+                    .DeleteManyAsync(new BsonDocument());
+
+                return actionResult.IsAcknowledged
+                    && actionResult.DeletedCount > 0;
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
         }
 
-        public Task<bool> Remove(string id)
+        public async Task<bool> Remove(string id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DeleteResult actionResult
+                    = await this._collection.DeleteOneAsync(this.GetFilterForId(id));
+
+                return actionResult.IsAcknowledged
+                    && actionResult.DeletedCount > 0;
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
         }
 
-        public Task<bool> Update(string id, string body)
+        public async Task<bool> Update(string id, UpdateDefinition<T> update)
         {
-            throw new NotImplementedException();
+            var filter = Builders<T>.Filter.Eq(s => "Id", id);
+            //var update = Builders<Note>.Update
+            //                .Set(s => s.Body, body)
+            //                .CurrentDate(s => s.UpdatedOn);
+
+            try
+            {
+                UpdateResult actionResult
+                    = await this._collection.UpdateOneAsync(filter, update);
+
+                return actionResult.IsAcknowledged
+                    && actionResult.ModifiedCount > 0;
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+        }
+
+        public async Task<bool> Update(string id, T item)
+        {
+            try
+            {
+                
+                ReplaceOneResult actionResult
+                    = await this._collection
+                                    .ReplaceOneAsync(this.GetFilterForId(id)
+                                            , item
+                                            , new UpdateOptions { IsUpsert = true });
+                return actionResult.IsAcknowledged
+                    && actionResult.ModifiedCount > 0;
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+        }
+
+        public ObjectId GetInternalId(string id)
+        {
+            ObjectId internalId;
+            if (!ObjectId.TryParse(id, out internalId))
+                internalId = ObjectId.Empty;
+
+            return internalId;
+        }
+
+        private string GetFilterForId(string id)
+        {
+            var filterId = String.Format("_id:ObjectId('{0}')", id);
+            return String.Format(@"{{{0}}}", filterId);
+
         }
     }
 }

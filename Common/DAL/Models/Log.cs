@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
 using MongoDB.Bson;
+using System.ComponentModel.DataAnnotations;
 
 namespace DAL.Models
 {
@@ -18,6 +19,8 @@ namespace DAL.Models
         [BsonElement("application_name")]
         [JsonProperty("application_name")]
         public string ApplicationName { get; set; }
+
+        [StringLength(50, MinimumLength = 3)]
         [BsonElement("data")]
         [JsonProperty("data")]
         public string Data { get; set; }

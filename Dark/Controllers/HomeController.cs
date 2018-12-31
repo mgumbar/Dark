@@ -10,9 +10,10 @@ namespace Dark.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public RedirectToActionResult Index()
         {
-            return View();
+            //return View();
+            return RedirectToAction("index", "Search");
         }
 
         public IActionResult About()

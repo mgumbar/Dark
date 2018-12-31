@@ -59,7 +59,7 @@ namespace Dark.Controllers
                     search.Application = null;
                 var applicationNameQuery = String.IsNullOrEmpty(search.Application) ? String.Format("application_name: {{ $ne:null }}") : String.Format("application_name: '{0}'", search.Application);
                 var dataQuery = String.IsNullOrEmpty(search?.Data) ? String.Format("data: {{ $ne:null }}") : String.Format("data: RegExp('{0}')", search.Data);
-                var logNameQuery = String.IsNullOrEmpty(search?.LogName) ? String.Format("logname: {{ $ne:null }}") : String.Format("logname: '{0}", search.LogName);
+                var logNameQuery = String.IsNullOrEmpty(search?.LogName) ? String.Format("logname: {{ $ne:null }}") : String.Format("logname: '{0}'", search.LogName);
                 var filter = String.Format(@"{{{0}, 
                                            date_time: {{$gte: ISODate('{1}'), $lte: ISODate('{2}')}},
                                            {3},
@@ -72,7 +72,7 @@ namespace Dark.Controllers
                                              logNameQuery);
 
                 //& builder.Eq("logname", logName);
-                var documentArray = await this._logRepository.GetCollection().Find(filter).Limit(5000).ToListAsync();
+                var documentArray = await this._logRepository.GetCollection().Find(filter).Limit(50).ToListAsync();
                 var result = new List<Log>();
                 foreach (var document in documentArray)
                 {

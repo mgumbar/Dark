@@ -26,9 +26,15 @@ namespace Dark.Controllers
         }
 
         // GET: Workflow/Details/5
-        public ActionResult Details(int id)
+        //public ActionResult Details(int id)
+        //{
+        //    return View();
+        //}
+
+        [HttpGet("Amon/{id}")]
+        public async Task<Workflow> Details(string id)
         {
-            return View();
+            return await this._AmonRepository.Get(id.ToString()) ?? new Workflow(); ;
         }
 
         // GET: Workflow/Create
@@ -38,19 +44,19 @@ namespace Dark.Controllers
         }
 
         // POST: Workflow/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        [HttpPost("Amon/")]
+        public async Task Create([FromBody] Workflow workflow)
         {
             try
             {
                 // TODO: Add insert logic here
 
-                return RedirectToAction(nameof(Index));
+                await this._AmonRepository.Add(workflow);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                // log or manage the exception
+                throw ex;
             }
         }
 
@@ -61,26 +67,29 @@ namespace Dark.Controllers
         }
 
         // POST: Workflow/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [HttpPut("Amon/{id}")]
+        //[Produces("application/json")]
+        public async Task<bool> Edit(string id, [FromBody] Workflow workflow)
         {
             try
             {
                 // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
+                workflow.Id =  this._AmonRepository.GetInternalId(id);
+                return await this._AmonRepository.Update(id.ToString(), workflow);
+                //return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                // log or manage the exception
+                throw ex;
             }
         }
 
         // GET: Workflow/Delete/5
-        public ActionResult Delete(int id)
+        [HttpDelete("Amon/{id}")]
+        public async Task<bool> Delete(string id)
         {
-            return View();
+            return await this._AmonRepository.Remove(id);
         }
 
         // POST: Workflow/Delete/5

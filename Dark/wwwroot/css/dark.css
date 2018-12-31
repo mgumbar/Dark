@@ -1,0 +1,24 @@
+.highlightYellow {
+    background-color: #F4D03F
+}
+
+.highlightRed {
+    background-color: #843534;
+    color: white;
+}
+
+.highlightGreen {
+    background-color: #8CC152
+}
+
+.row {
+    padding: 5px;
+}
+
+.navbar {
+    background-color: #5296d4;
+    border-color: #a99e9e;
+}
+.navbar a {
+    color: white;
+}
