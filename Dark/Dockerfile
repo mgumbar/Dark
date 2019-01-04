@@ -1,14 +1,18 @@
 FROM microsoft/dotnet:sdk AS build-env
-
 WORKDIR /app
 
-# Copy csproj and restore as distinct layers
-COPY *.csproj ./
-RUN dotnet restore
+COPY .. ./
+
+WORKDIR /app/Common/DAL/
+RUN ["dotnet", "restore"]
+
+WORKDIR /app/Dark/
+RUN ["dotnet", "restore"]
 
 # Copy everything else and build
-COPY . ./
-RUN dotnet publish -c Release -o out
+COPY . /app
+WORKDIR /app
+RUN dotnet publish -c Release -o /app/out
 
 # Build runtime image
 FROM microsoft/dotnet:aspnetcore-runtime
