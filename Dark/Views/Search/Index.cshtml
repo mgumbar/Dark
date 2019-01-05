@@ -18,11 +18,11 @@
                 </a>
             </h3>
         </div>
-        <div class="panel-body">
-            <div class="content-row">
-                <div class="row top-buffer">
-                    @using (Html.BeginForm("Index", "Search", FormMethod.Post, new { @class = "form" }))
-                    {
+        @using (Html.BeginForm("Index", "Search", FormMethod.Post, new { @class = "form" }))
+        {
+            <div class="panel-body">
+                <div class="content-row">
+                    <div class="row top-buffer">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                         <div class="col-md-2">
@@ -50,75 +50,80 @@
                                 <span class="glyphicon glyphicon-search"></span>Submit
                             </button>
                         </div>
-                    }
-                </div>
-                <div class="row top-buffer">
-                </div>
-                <div class="row top-buffer">
-                    <div class="collapse" id="stats">
-                        <div class="panel-body">
-                            <div class="content-row">
-                                <div class="row">
-                                    <canvas id="myChart" width="400" height="100"></canvas>
+                    </div>
+                    <div class="row top-buffer">
+                    </div>
+                    <div class="row top-buffer">
+                        <div class="collapse" id="stats">
+                            <div class="panel-body">
+                                <div class="content-row">
+                                    <div class="row">
+                                        <canvas id="myChart" width="400" height="100"></canvas>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div><!--row-->
-                <div class="row">
-                    <div id="highlight-plugin"></div>
-                    <div class="col-md-4">
-                        <div class="form-group has-success has-feedback">
-                            <input type="text" class="form-control" placeholder="High light me" id="highlightme1">
+                    </div><!--row-->
+                    <div class="row">
+                        <div id="highlight-plugin"></div>
+                        <div class="col-md-4">
+                            <div class="form-group has-success has-feedback">
+                                <input type="text" class="form-control" placeholder="High light me" id="highlightme1">
+                            </div>
+                            <div class="clear"></div>
+                            @*  *@
                         </div>
-                        <div class="clear"></div>
-                        @*  *@
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group has-warning has-feedback">
-                            <input type="text" class="form-control" placeholder="High light me" id="highlightme2">
+                        <div class="col-md-4">
+                            <div class="form-group has-warning has-feedback">
+                                <input type="text" class="form-control" placeholder="High light me" id="highlightme2">
+                            </div>
+                            <div class="clear"></div>
                         </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group has-error has-feedback">
-                            <input type="text" class="form-control" placeholder="High light me" id="highlightme3">
+                        <div class="col-md-4">
+                            <div class="form-group has-error has-feedback">
+                                <input type="text" class="form-control" placeholder="High light me" id="highlightme3">
+                            </div>
+                            <div class="clear"></div>
                         </div>
-                        <div class="clear"></div>
-                    </div>
-                </div><!--row-->
-                <div class="row">
-                    <div class="bs-example" data-example-id="contextual-table">
-                        <table class="table">
-                            <thead> <tr> <th>#</th> <th>Application</th> <th>File</th> <th>Time</th> <th>Process</th> <th>Line</th> </tr> </thead>
-                            <tbody>
-                                @*<tr class="@item.GetElement("status").Value.ToString()">
-                                <td scope="row">@item.GetElement("line").Value.ToString()</td>
-                                <td>@item.GetElement("logname").Value.ToString()</td>
-                                <td>@item.GetElement("date").Value.ToString() @item.GetElement("time").Value.ToString()</td>
-                                <td>@item.GetElement("data").Value.ToString()</td>
-                            </tr>*@
-                                @* .active, .success, .info, .warning, .danger *@
+                    </div><!--row-->
+                    <div class="row">
+                        <div class="bs-example" data-example-id="contextual-table">
+                            <table class="table">
+                                <thead> <tr> <th>#</th> <th>Application</th> <th>File</th> <th>Time</th> <th>Process</th> <th>Line</th> </tr> </thead>
+                                <tbody>
+                                    @*<tr class="@item.GetElement("status").Value.ToString()">
+                                        <td scope="row">@item.GetElement("line").Value.ToString()</td>
+                                        <td>@item.GetElement("logname").Value.ToString()</td>
+                                        <td>@item.GetElement("date").Value.ToString() @item.GetElement("time").Value.ToString()</td>
+                                        <td>@item.GetElement("data").Value.ToString()</td>
+                                    </tr>*@
+                                    @* .active, .success, .info, .warning, .danger *@
 
-                                @if (Model != null)
-                                {
-                                    @foreach (var item in Model)
+                                    @if (Model != null)
                                     {
-                                        <tr class="@item.Status">
-                                            <td scope="row">@item.Line</td>
-                                            <td>@item.ApplicationName</td>
-                                            <td>@item.Logname</td>
-                                            <td>@item.DateTime.ToLocalTime().ToString()</td>
-                                            <td>@item.Process.ToString()</td>
-                                            <td>@item.Data</td>
-                                        </tr>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr class="@item.Status">
+                                                <td scope="row">@item.Line</td>
+                                                <td>@item.ApplicationName</td>
+                                                <td>@item.LogNameShort()</td>
+                                                <td>@item.DateTime.ToLocalTime().ToString()</td>
+                                                <td>@item.Process.ToString()</td>
+                                                <td>@item.Data</td>
+                                            </tr>
+                                        }
                                     }
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                </div><!--row-->
-            </div><!--class="content-row">-->
-        </div><!-- panel body -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!--row-->
+                    <div class="row">
+                        <div class="dropup">
+                            @Html.DropDownList("pageSize", new SelectList( new List<int>() { 100, 1000, 2000, 3000, 4000, 5000 }), new { @class = "btn btn-default dropdown-toggle", @id = "pageSize", @placeholder = "page Size" })
+                        </div>
+                    </div><!--row-->
+                </div><!--class="content-row">-->
+            </div><!-- panel body -->
+        }
     </div><!-- panel-default -->
 </div><!-- panel content-9 -->

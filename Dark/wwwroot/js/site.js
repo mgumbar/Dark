@@ -1,9 +1,8 @@
 ﻿$(document).ready(function () {
     //http://johannburkard.de/blog/programming/javascript/highlight-javascript-text-higlighting-jquery-plugin.html
-    console.log("test2");
     $(function () {
-        $('#startDate').datetimepicker({ format: 'YYYY-MM-DD hh:mm:ss'} );
-        $('#endDate').datetimepicker({ format: 'YYYY-MM-DD hh:mm:ss' });
+        $('#startDate').datetimepicker({ format: 'YYYY-MM-DD HH:mm:ss'} );
+        $('#endDate').datetimepicker({ format: 'YYYY-MM-DD HH:mm:ss' });
     });
 
     $("#highlightme1").change(function () {

@@ -85,7 +85,7 @@ namespace Dark.Controllers
                                              logNameQuery);
 
                 //& builder.Eq("logname", logName);
-                var documentArray = await this._logRepository.GetCollection().Find(filter).Limit(50).ToListAsync();
+                var documentArray = await this._logRepository.GetCollection().Find(filter).Limit(search.PageSize).ToListAsync();
                 var result = new List<Log>();
                 foreach (var document in documentArray)
                 {

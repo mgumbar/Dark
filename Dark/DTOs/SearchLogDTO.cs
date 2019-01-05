@@ -22,5 +22,8 @@ namespace Dark.DTOs
 
         [JsonProperty("logName")]
         public string LogName { get; set; }
+
+        [JsonProperty("pageSize")]
+        public int PageSize { get; set; }
     }
 }

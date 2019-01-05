@@ -78,5 +78,11 @@ namespace DAL.Models
         [BsonElement("process")]
         [JsonProperty("process")]
         public string Process { get; set; }
+
+        public string LogNameShort()
+        {
+            int maxSize = 50;
+            return this.Logname.Length > maxSize ? this.Logname.Substring(0, maxSize) + "..." : this.Logname;
+        }
     }
 }
