@@ -42,10 +42,22 @@ namespace Dark.Controllers
             return View();
         }
 
-        // GET: Search/Create
-        public ActionResult Create()
+        // POST: Workflow/Create
+        [HttpPost("Log/")]
+        public async Task Create([FromBody] Log log)
         {
-            return View();
+            try
+            {
+                if (log == null)
+                    return;
+                Console.WriteLine(DateTime.UtcNow + ": Inserting log: " + log.ToJson().ToString());
+                await this._logRepository.Add(log);
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
         }
 
         // POST: Search/Create
@@ -53,6 +65,7 @@ namespace Dark.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Index(SearchLogDTO search)
         {
+            Console.WriteLine(DateTime.UtcNow + ": Executing query: " + search.ToJson().ToString());
             try
             {
                 if (search?.Application?.ToLower() == "global")
@@ -66,8 +79,8 @@ namespace Dark.Controllers
                                            {4}
                                          }}",
                                              applicationNameQuery,
-                                             search?.StartDate.AddHours(-2).ToString("yyyy-MM-ddTHH:mm:ssZ"),
-                                             search?.EndDate.AddHours(-2).ToString("yyyy-MM-ddTHH:mm:ssZ"),
+                                             search?.StartDate.AddHours(-1).ToString("yyyy-MM-ddTHH:mm:ssZ"),
+                                             search?.EndDate.AddHours(-1).ToString("yyyy-MM-ddTHH:mm:ssZ"),
                                              dataQuery,
                                              logNameQuery);
 

@@ -9,7 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{5293F7
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{8018889D-DED9-473F-9B3F-CB427F7523D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "Common\DAL\DAL.csproj", "{0B8430CC-BAA6-48EC-98F0-F3DA68E4C2C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "Common\DAL\DAL.csproj", "{0B8430CC-BAA6-48EC-98F0-F3DA68E4C2C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileWatcher", "Filewatcher\FileWatcher\FileWatcher.csproj", "{70B4B7C4-DEAC-4C92-AB33-72FF8C12298E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{0B8430CC-BAA6-48EC-98F0-F3DA68E4C2C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B8430CC-BAA6-48EC-98F0-F3DA68E4C2C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B8430CC-BAA6-48EC-98F0-F3DA68E4C2C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70B4B7C4-DEAC-4C92-AB33-72FF8C12298E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70B4B7C4-DEAC-4C92-AB33-72FF8C12298E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70B4B7C4-DEAC-4C92-AB33-72FF8C12298E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70B4B7C4-DEAC-4C92-AB33-72FF8C12298E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

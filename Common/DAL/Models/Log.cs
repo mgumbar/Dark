@@ -11,6 +11,21 @@ namespace DAL.Models
     [BsonIgnoreExtraElements]
     public class Log
     {
+        public Log(string data, int line, string path, string host, string applicationName, string status, string process)
+        {
+            this.Line = line;
+            this.Data = data;
+            this.DateTime = DateTime.UtcNow;
+            this.Host = host;
+            this.User = "SYS";
+            this.Path = path;
+            this.Logname = path.Substring(path.LastIndexOf('\\') + 1);
+            this.Status = status;
+            this.Process = process;
+            this.ApplicationName = applicationName;
+        }
+
+        [JsonIgnore]
         [BsonRepresentation(BsonType.ObjectId)]
         public ObjectId Id { get; set; }
         [BsonElement("line")]
