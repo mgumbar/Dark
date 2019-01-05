@@ -38,7 +38,7 @@ namespace FileWatcher
             watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
                | NotifyFilters.FileName | NotifyFilters.DirectoryName;
             // Only watch text files.
-            watcher.Filter = "*.txt";
+            watcher.Filter = "*.log";
 
             // Add event handlers.
             watcher.Changed += new FileSystemEventHandler(OnChanged);
