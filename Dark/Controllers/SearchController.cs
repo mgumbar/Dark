@@ -50,7 +50,7 @@ namespace Dark.Controllers
             {
                 if (log == null)
                     return;
-                Console.WriteLine(DateTime.UtcNow + ": Inserting log: " + log.ToJson().ToString());
+                //Console.WriteLine(DateTime.UtcNow + ": Inserting log: " + log.ToJson().ToString());
                 await this._logRepository.Add(log);
             }
             catch (Exception ex)
