@@ -103,7 +103,7 @@ namespace Dark.BGService
             try
             {
                 Console.WriteLine("Test start 9");
-                using (FileStream stream = new FileStream(e.FullPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                using (FileStream stream = new FileStream(e.FullPath, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     Console.WriteLine("Test start 10");
                     using (StreamReader sr = new StreamReader(stream))
