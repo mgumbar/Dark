@@ -19,12 +19,10 @@ namespace Dark.Controllers
     public class SearchController : Controller
     {
         private readonly IGenericRepository<Log> _logRepository;
-        private readonly IHubContext<LogHub> _logHub;
 
-        public SearchController(IUnitOfWork uow, IHubContext<LogHub> logHub)
+        public SearchController(IUnitOfWork uow)
         {
             _logRepository = uow.Log;
-            _logHub = logHub;
         }
 
         // GET: Search
@@ -69,7 +67,6 @@ namespace Dark.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Index(SearchLogDTO search)
         {
-            await _logHub.Clients.All.SendAsync("ReceiveMessage", "test server", "GracePeriod task doing background work.");
             Console.WriteLine(DateTime.UtcNow + ": Executing query: " + search.ToJson().ToString());
             try
             {
