@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("Services")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("FileWatcher")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("Services")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Services")]
+[assembly: System.Reflection.AssemblyProductAttribute("FileWatcher")]
+[assembly: System.Reflection.AssemblyTitleAttribute("FileWatcher")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Généré par la classe MSBuild WriteCodeFragment.

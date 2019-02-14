@@ -1,0 +1,14 @@
+C:\Users\hp_envy\source\Dark\Filewatcher\FileWatcher\bin\Debug\netcoreapp2.1\FileWatcher.deps.json
+C:\Users\hp_envy\source\Dark\Filewatcher\FileWatcher\bin\Debug\netcoreapp2.1\FileWatcher.runtimeconfig.json
+C:\Users\hp_envy\source\Dark\Filewatcher\FileWatcher\bin\Debug\netcoreapp2.1\FileWatcher.runtimeconfig.dev.json
+C:\Users\hp_envy\source\Dark\Filewatcher\FileWatcher\bin\Debug\netcoreapp2.1\FileWatcher.dll
+C:\Users\hp_envy\source\Dark\Filewatcher\FileWatcher\bin\Debug\netcoreapp2.1\FileWatcher.pdb
+C:\Users\hp_envy\source\Dark\Filewatcher\FileWatcher\bin\Debug\netcoreapp2.1\DAL.dll
+C:\Users\hp_envy\source\Dark\Filewatcher\FileWatcher\bin\Debug\netcoreapp2.1\DAL.pdb
+C:\Users\hp_envy\source\Dark\Filewatcher\FileWatcher\obj\Debug\netcoreapp2.1\FileWatcher.csprojAssemblyReference.cache
+C:\Users\hp_envy\source\Dark\Filewatcher\FileWatcher\obj\Debug\netcoreapp2.1\FileWatcher.csproj.CoreCompileInputs.cache
+C:\Users\hp_envy\source\Dark\Filewatcher\FileWatcher\obj\Debug\netcoreapp2.1\FileWatcher.AssemblyInfoInputs.cache
+C:\Users\hp_envy\source\Dark\Filewatcher\FileWatcher\obj\Debug\netcoreapp2.1\FileWatcher.AssemblyInfo.cs
+C:\Users\hp_envy\source\Dark\Filewatcher\FileWatcher\obj\Debug\netcoreapp2.1\FileWatcher.csproj.CopyComplete
+C:\Users\hp_envy\source\Dark\Filewatcher\FileWatcher\obj\Debug\netcoreapp2.1\FileWatcher.dll
+C:\Users\hp_envy\source\Dark\Filewatcher\FileWatcher\obj\Debug\netcoreapp2.1\FileWatcher.pdb

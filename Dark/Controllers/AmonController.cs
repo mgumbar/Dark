@@ -20,9 +20,10 @@ namespace Dark.Controllers
 
         // GET: Workflow
         [HttpGet]
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await _AmonRepository.GetAll());
+            return View();
+            //return View(await _AmonRepository.GetAll());
         }
 
         // GET: Workflow/Details/5

@@ -6,9 +6,11 @@ using DAL;
 using DAL.Models;
 using DAL.Repositories;
 using Dark.DTOs;
+using Dark.Hubs;
 using Dark.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 
@@ -17,10 +19,12 @@ namespace Dark.Controllers
     public class SearchController : Controller
     {
         private readonly IGenericRepository<Log> _logRepository;
+        private readonly IHubContext<LogHub> _logHub;
 
-        public SearchController(IUnitOfWork uow)
+        public SearchController(IUnitOfWork uow, IHubContext<LogHub> logHub)
         {
             _logRepository = uow.Log;
+            _logHub = logHub;
         }
 
         // GET: Search
@@ -65,6 +69,7 @@ namespace Dark.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Index(SearchLogDTO search)
         {
+            await _logHub.Clients.All.SendAsync("ReceiveMessage", "test server", "GracePeriod task doing background work.");
             Console.WriteLine(DateTime.UtcNow + ": Executing query: " + search.ToJson().ToString());
             try
             {

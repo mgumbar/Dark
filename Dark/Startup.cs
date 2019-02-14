@@ -14,6 +14,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using DAL;
+using Microsoft.Extensions.Hosting;
+using Dark.BGService;
+using Dark.Hubs;
 
 namespace Dark
 {
@@ -58,10 +61,14 @@ namespace Dark
             var config = this.Configuration.GetConnectionString("DefaultConnection");
             //services.AddTransient<ILogRepository, LogRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddSignalR();
+            services.AddSingleton<IHostedService, LogWatcherService>();
+            services.AddTransient<IDisposable, LogHub>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -74,7 +81,10 @@ namespace Dark
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<LogHub>("/logHub");
+            });
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
