@@ -57,7 +57,7 @@ namespace Dark.BGService
         {
             // Create a new FileSystemWatcher and set its properties.
             FileSystemWatcher watcher = new FileSystemWatcher();
-            watcher.Path = "/var/lib/docker/containers";
+            watcher.Path = "/var/lib/docker/containers/";
             watcher.IncludeSubdirectories = true;
             /* Watch for changes in LastAccess and LastWrite times, and
                the renaming of files or directories. */
