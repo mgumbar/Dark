@@ -102,30 +102,30 @@ namespace Dark.BGService
             // Specify what is done when a file is changed, created, or deleted.
             try
             {
-                Console.WriteLine("Test start 9");
+                //Console.WriteLine("Test start 9");
                 using (FileStream stream = new FileStream(e.FullPath, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
-                    Console.WriteLine("Test start 10");
+                    //Console.WriteLine("Test start 10");
                     using (StreamReader sr = new StreamReader(stream))
                     {
-                        Console.WriteLine("Test start 11");
+                        //Console.WriteLine("Test start 11");
                         // Read the stream to a string, and write the string to the console.
                         string line;
                         int currentLine = 0;
-                        Console.WriteLine("Test start 12");
+                        //Console.WriteLine("Test start 12");
                         if (!this._fileIndex.ContainsKey(e.FullPath))
                         {
                             this._fileIndex.Add(e.FullPath, currentLine);
                         }
-                        Console.WriteLine("Test start 13");
+                        //Console.WriteLine("Test start 13");
                         while ((line = sr.ReadLine()) != null)
                         {
-                            Console.WriteLine("Test start 14");
+                            //Console.WriteLine("Test start 14");
                             currentLine++;
                             var previousReadLine = this._fileIndex[e.FullPath];
                             if (currentLine > previousReadLine)
                             {
-                                Console.WriteLine("Test start 15");
+                                //Console.WriteLine("Test start 15");
                                 //SendEvent(line, currentLine, e.FullPath);
                                 _logHub.Clients.All.SendAsync("ReceiveMessage", e.FullPath, line);
                                 this._fileIndex.Remove(e.FullPath);
