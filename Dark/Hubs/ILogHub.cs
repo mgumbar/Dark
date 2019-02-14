@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Dark.Hubs
 {
-    public interface ILogHub
-    {
-        Task SendMessage(string server, string log);
-    }
+    //public interface ILogHub
+    //{
+    //    Task SendMessage(string server, string log);
+    //}
 }
