@@ -62,7 +62,7 @@ namespace Dark.BGService
             Console.WriteLine("Test start 7");
             // Create a new FileSystemWatcher and set its properties.
             FileSystemWatcher watcher = new FileSystemWatcher();
-            watcher.Path = "/var/lib/docker/containers/";
+            watcher.Path = "dockerlogs";
             Console.WriteLine("Test start 8");
             //watcher.Path = @"C:\Users\hp_envy\Downloads\";
             if (Directory.Exists(watcher.Path))
