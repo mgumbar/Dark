@@ -59,10 +59,15 @@ namespace Dark.BGService
             FileSystemWatcher watcher = new FileSystemWatcher();
             watcher.Path = @"C:\Users\hp_envy\Downloads\";
             watcher.Path = @"/var/lib/docker/containers/";
-            if (Directory.Exists(watcher.Path));
+            if (Directory.Exists(watcher.Path))
             {
                 Console.WriteLine("IT EXISTS");
             }
+            else
+            {
+                Console.WriteLine("IT DOES NOT EXISTS");
+            }
+
             watcher.IncludeSubdirectories = true;
             /* Watch for changes in LastAccess and LastWrite times, and
                the renaming of files or directories. */
