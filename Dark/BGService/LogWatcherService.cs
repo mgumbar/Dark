@@ -26,7 +26,7 @@ namespace Dark.BGService
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             await Task.Run(() => Console.WriteLine("Test start 2"));
-            _logger.LogDebug($"GracePeriodManagerService is starting.");
+            //_logger.LogDebug($"GracePeriodManagerService is starting.");
 
             stoppingToken.Register(() =>
                     _logger.LogDebug($" GracePeriod background task is stopping."));
@@ -34,7 +34,7 @@ namespace Dark.BGService
             while (!stoppingToken.IsCancellationRequested)
             {
                 _logger.LogDebug($"GracePeriod task doing background work.");
-                this.Run();
+                this.Watch();
 
                 // This eShopOnContainers method is querying a database table 
                 // and publishing events into the Event Bus (RabbitMS / ServiceBus)
@@ -53,7 +53,7 @@ namespace Dark.BGService
 
         }
 
-        private void Run()
+        private void Watch()
         {
             // Create a new FileSystemWatcher and set its properties.
             FileSystemWatcher watcher = new FileSystemWatcher();
