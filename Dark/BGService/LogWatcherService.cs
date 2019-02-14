@@ -57,14 +57,19 @@ namespace Dark.BGService
         {
             // Create a new FileSystemWatcher and set its properties.
             FileSystemWatcher watcher = new FileSystemWatcher();
-            watcher.Path = "/var/lib/docker/containers/";
+            watcher.Path = @"C:\Users\hp_envy\Downloads\";
+            watcher.Path = @"/var/lib/docker/containers/";
+            if (Directory.Exists(watcher.Path));
+            {
+                Console.WriteLine("IT EXISTS");
+            }
             watcher.IncludeSubdirectories = true;
             /* Watch for changes in LastAccess and LastWrite times, and
                the renaming of files or directories. */
             watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
                | NotifyFilters.FileName | NotifyFilters.DirectoryName;
             // Only watch text files.
-            watcher.Filter = "*.log";
+            watcher.Filter = "*.*";
 
             // Add event handlers.
             watcher.Changed += new FileSystemEventHandler(OnChangedAsync);
