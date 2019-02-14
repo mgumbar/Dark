@@ -28,12 +28,16 @@ namespace Dark.BGService
             await Task.Run(() => Console.WriteLine("Test start 2"));
             _logger.LogDebug($"GracePeriodManagerService is starting.");
 
+            await Task.Run(() => Console.WriteLine("Test start 3"));
             stoppingToken.Register(() =>
                     _logger.LogDebug($" GracePeriod background task is stopping."));
+            await Task.Run(() => Console.WriteLine("Test start 4"));
 
             while (!stoppingToken.IsCancellationRequested)
             {
+                await Task.Run(() => Console.WriteLine("Test start 5"));
                 _logger.LogDebug($"GracePeriod task doing background work.");
+                await Task.Run(() => Console.WriteLine("Test start 6"));
                 this.Watch();
 
                 // This eShopOnContainers method is querying a database table 
@@ -55,9 +59,11 @@ namespace Dark.BGService
 
         private void Watch()
         {
+            Console.WriteLine("Test start 7");
             // Create a new FileSystemWatcher and set its properties.
             FileSystemWatcher watcher = new FileSystemWatcher();
             watcher.Path = "/var/lib/docker/containers/";
+            Console.WriteLine("Test start 8");
             //watcher.Path = @"C:\Users\hp_envy\Downloads\";
             if (Directory.Exists(watcher.Path))
             {
