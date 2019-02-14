@@ -25,7 +25,7 @@ namespace Dark.BGService
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            await Task.Run(() => Console.WriteLine("Test start"));
+            await Task.Run(() => Console.WriteLine("Test start 2"));
             _logger.LogDebug($"GracePeriodManagerService is starting.");
 
             stoppingToken.Register(() =>
