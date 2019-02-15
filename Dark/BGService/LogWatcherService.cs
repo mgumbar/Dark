@@ -105,7 +105,7 @@ namespace Dark.BGService
                 //Console.WriteLine("Test start 9");
                 using (FileStream stream = new FileStream(e.FullPath, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
-                    //Console.WriteLine("Test start 10");
+                    Console.WriteLine("Test start 10:" + e.FullPath);
                     using (StreamReader sr = new StreamReader(stream))
                     {
                         //Console.WriteLine("Test start 11");
@@ -139,7 +139,7 @@ namespace Dark.BGService
             }
             catch (Exception ex)
             {
-                //Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
                 //throw;
             }
             //Console.WriteLine("File: " + e.FullPath + " " + e.ChangeType);

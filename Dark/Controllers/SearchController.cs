@@ -69,7 +69,7 @@ namespace Dark.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Index(SearchLogDTO search)
         {
-            await _logHub.Clients.All.SendAsync("ReceiveMessage", "test server", "GracePeriod task doing background work.");
+            //await _logHub.Clients.All.SendAsync("ReceiveMessage", "test server", "GracePeriod task doing background work.");
             Console.WriteLine(DateTime.UtcNow + ": Executing query: " + search.ToJson().ToString());
             try
             {
