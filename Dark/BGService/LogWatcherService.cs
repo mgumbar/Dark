@@ -80,7 +80,7 @@ namespace Dark.BGService
             watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
                | NotifyFilters.FileName | NotifyFilters.DirectoryName;
             // Only watch text files.
-            watcher.Filter = "*.log";
+            watcher.Filter = "*.*";
 
             // Add event handlers.
             watcher.Changed += new FileSystemEventHandler(OnChangedAsync);
