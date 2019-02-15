@@ -139,8 +139,8 @@ namespace Dark.BGService
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                throw;
+                //Console.WriteLine(ex.Message);
+                //throw;
             }
             //Console.WriteLine("File: " + e.FullPath + " " + e.ChangeType);
         }
