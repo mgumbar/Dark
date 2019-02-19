@@ -1,4 +1,6 @@
-﻿using Dark.Hubs;
+﻿using DAL;
+using DAL.Models;
+using Dark.Hubs;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -6,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -108,6 +111,7 @@ namespace Dark.BGService
                     //Console.WriteLine("Test start 10:" + e.FullPath);
                     using (StreamReader sr = new StreamReader(stream))
                     {
+                        var containerId = e.FullPath.Split("/")[1];
                         //Console.WriteLine("Test start 11");
                         // Read the stream to a string, and write the string to the console.
                         string line;
@@ -126,8 +130,8 @@ namespace Dark.BGService
                             if (currentLine > previousReadLine)
                             {
                                 //Console.WriteLine("Test start 15");
-                                //SendEvent(line, currentLine, e.FullPath);
-                                _logHub.Clients.All.SendAsync("ReceiveMessage", e.FullPath, line);
+                                SendEvent(line, currentLine, containerId);
+                                _logHub.Clients.All.SendAsync("ReceiveMessage", containerId, line);
                                 this._fileIndex.Remove(e.FullPath);
                                 this._fileIndex.Add(e.FullPath, previousReadLine + 1);
                             }
@@ -149,6 +153,31 @@ namespace Dark.BGService
         {
             // Specify what is done when a file is renamed.
             //Console.WriteLine("File: {0} renamed to {1}", e.OldFullPath, e.FullPath);
+        }
+
+        private void SendEvent(string data, int line, string path)
+        {
+            try
+            {
+                Log log = new Log(data, line, path, "fileWatcher", "LOG", "INFO", "0");
+                string url = @"http://192.168.1.16:8001/Log";
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+                httpWebRequest.Accept = "application/json; charset=utf-8";
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "POST";
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                {
+                    streamWriter.Write(log.ToJson());
+                    streamWriter.Flush();
+                    streamWriter.Close();
+                }
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("Error sending event:" + e.Message);
+            }
         }
     }
 }
