@@ -111,7 +111,7 @@ namespace Dark.BGService
                     //Console.WriteLine("Test start 10:" + e.FullPath);
                     using (StreamReader sr = new StreamReader(stream))
                     {
-                        var containerId = e.FullPath.Split("/")[0];
+                        var containerId = e.FullPath.Split("/")[2];
                         //Console.WriteLine("Test start 11");
                         // Read the stream to a string, and write the string to the console.
                         string line;
