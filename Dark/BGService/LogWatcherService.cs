@@ -160,7 +160,7 @@ namespace Dark.BGService
         {
             try
             {
-                if (path.Contains("29baebde2e5d"))
+                if (path.Contains("af9cf93ea730"))
                     return;
                 Log log = new Log(data, line, path, "fileWatcher", "LOG", "INFO", "0");
                 string url = @"http://192.168.1.16:8001/Log";
