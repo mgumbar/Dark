@@ -66,8 +66,8 @@ namespace Dark.BGService
             // Create a new FileSystemWatcher and set its properties.
             FileSystemWatcher watcher = new FileSystemWatcher();
             watcher.Path = "/dockerlogs";
-            Console.WriteLine("Test start 8");
             //watcher.Path = @"C:\Users\hp_envy\Downloads\";
+            Console.WriteLine("Test start 8");
             if (Directory.Exists(watcher.Path))
             {
                 Console.WriteLine("IT EXISTS");
@@ -111,7 +111,8 @@ namespace Dark.BGService
                     //Console.WriteLine("Test start 10:" + e.FullPath);
                     using (StreamReader sr = new StreamReader(stream))
                     {
-                        var containerId = e.FullPath.Split("/")[2];
+                        var containerId = e.FullPath.Split("/")[2].Substring(0, 13);
+                        //var containerId = "01234567891234";
                         //Console.WriteLine("Test start 11");
                         // Read the stream to a string, and write the string to the console.
                         string line;
@@ -131,7 +132,7 @@ namespace Dark.BGService
                             {
                                 //Console.WriteLine("Test start 15");
                                 SendEvent(line, currentLine, containerId);
-                                _logHub.Clients.All.SendAsync("ReceiveMessage", containerId, line);
+                                _logHub.Clients.All.SendAsync("ReceiveMessage", currentLine , $"{containerId} | {line}");
                                 this._fileIndex.Remove(e.FullPath);
                                 this._fileIndex.Add(e.FullPath, previousReadLine + 1);
                             }

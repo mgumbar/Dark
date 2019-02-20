@@ -7,9 +7,10 @@ document.getElementById("sendButton").disabled = true;
 
 connection.on("ReceiveMessage", function (user, message) {
     var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    var encodedMsg = user + ": " + msg;
+    var encodedMsg = user + ":  " + msg;
     var li = document.createElement("li");
     li.textContent = encodedMsg;
+    li.style = "color:white; font-weight:bold;";
     document.getElementById("messagesList").appendChild(li);
 });
 
