@@ -10,7 +10,7 @@ connection.on("ReceiveMessage", function (user, message) {
     var encodedMsg = user + ":  " + msg;
     var li = document.createElement("li");
     li.textContent = encodedMsg;
-    li.style = "color:white; font-weight:bold;";
+    li.style = "color:white;";
     document.getElementById("messagesList").appendChild(li);
 });
 
